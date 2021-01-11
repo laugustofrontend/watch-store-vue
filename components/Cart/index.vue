@@ -1,0 +1,59 @@
+<template>
+  <div
+    class="fixed right-0 top-0 max-w-xs w-full h-full px-6 py-4 transition duration-300 transform overflow-y-auto bg-white border-1-2 border-gray-300"
+  >
+    <div class="flex items-center justify-between">
+      <h3 class="text-2x1 font-medium text-gray-700">Your Cart</h3>
+      <button class="text-gray-600 focus:outline-none">
+        <svg
+          class="h-5 w-5"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <hr class="my-3" />
+
+    <!-- add cart-item here -->
+
+    <div class="mt-8">
+      <form class="flex items-center justify-center">
+        <input
+          type="text"
+          class="form-input w-48"
+          placeholder="Add promocode"
+        />
+        <button
+          class="ml-3 flex items-center px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
+        >
+          <span>Apply</span>
+        </button>
+      </form>
+    </div>
+
+    <a
+      href=""
+      class="flex items-center justify-center mt-4 px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
+    >
+      <span>Checkout</span>
+      <svg
+        class="h-5 w-5"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path d="M17 8l4 4m0 01-4 4m4-4H3" />
+      </svg>
+    </a>
+  </div>
+</template>
