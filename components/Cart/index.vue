@@ -21,7 +21,7 @@
 
     <hr class="my-3" />
 
-    <!-- add cart-item here -->
+    <cart-item />
 
     <div class="mt-8">
       <form class="flex items-center justify-center">
@@ -57,3 +57,11 @@
     </a>
   </div>
 </template>
+
+<script>
+import CartItem from './item'
+
+export default {
+  components: { CartItem },
+}
+</script>
