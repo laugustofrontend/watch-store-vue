@@ -28,9 +28,9 @@
 
           <span class="text-gray-700 mx-2">2</span>
 
-          <button class="text-gray-500 focus:outline-none:focus:text-gray-600">
+          <button class="text-gray-500 focus:outline-none focus:text-gray-600">
             <svg
-              class="h5 w-5"
+              class="h-5 w-5"
               fill="none"
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -38,7 +38,7 @@
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              <path d="M15 12H912 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
           </button>
         </div>
