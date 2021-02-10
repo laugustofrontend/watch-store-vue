@@ -35,7 +35,6 @@ export default {
     try {
       this.products = (await this.$axios.get('/api/products')).data.products
     } catch (e) {
-      console.error('server error => ', e)
       this.errorMessage = 'Problemas ao carregar a lista'
     }
   },
