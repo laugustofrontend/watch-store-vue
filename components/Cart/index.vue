@@ -26,7 +26,13 @@
 
     <hr class="my-3" />
 
-    <cart-item />
+    <cart-item
+      v-for="product in products"
+      :key="product.id"
+      :product="product"
+    />
+
+    <h3 v-if="!hasProduct">Cart is empty</h3>
 
     <a
       href=""
@@ -57,6 +63,15 @@ export default {
     isOpen: {
       type: Boolean,
       default: false,
+    },
+    products: {
+      type: Array,
+      default: () => [],
+    },
+  },
+  computed: {
+    hasProduct() {
+      return this.products.length > 0
     },
   },
   methods: {
