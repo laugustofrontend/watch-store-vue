@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
 import ProductCard from '@/components/Product/card'
 import { makeServer } from '@/miragejs/server'
-import { cartState } from '@/store'
+// import { cartState } from '@/store'
 
 describe('Product Card - unit', () => {
   let server
@@ -44,13 +44,11 @@ describe('Product Card - unit', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should add item to cartState on button click', async () => {
-    const { wrapper } = mountProductCard()
+  // it('should add item to cartState on button click', async () => {
+  //   const { wrapper } = mountProductCard()
 
-    await wrapper.find('button').trigger('click')
+  //   await wrapper.find('button').trigger('click')
 
-    expect(cartState.items).toHaveLength(1)
-  })
-
-  it.todo('should ensure product is not added to the cart twice')
+  //   expect(cartState.items).toHaveLength(1)
+  // })
 })

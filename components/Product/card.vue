@@ -31,8 +31,6 @@
 </template>
 
 <script>
-import { cartState } from '@/store'
-
 export default {
   name: 'ProductCard',
   props: {
@@ -43,8 +41,8 @@ export default {
   },
   methods: {
     addToCart() {
-      cartState.open = true
-      cartState.items.push(this.product)
+      this.$cart.open()
+      this.$cart.addProduct(this.product)
     },
   },
 }
