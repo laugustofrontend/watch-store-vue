@@ -2,8 +2,8 @@
   <div class="flex justify-between mt-6">
     <div class="flex">
       <img
-        src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"
-        alt=""
+        :src="product.image"
+        :alt="product.title"
         class="h-20 w-20 object-cover rounded"
       />
 
@@ -28,9 +28,9 @@
             </svg>
           </button>
 
-          <span data-testid="quantity" class="text-gray-700 mx-2">{{
-            quantity
-          }}</span>
+          <span data-testid="quantity" class="text-gray-700 mx-2">
+            {{ quantity }}
+          </span>
 
           <button
             data-testid="+"
