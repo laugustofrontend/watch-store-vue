@@ -65,3 +65,9 @@ export class CartManager {
     return this.getState()
   }
 }
+
+export default {
+  install: (Vue) => {
+    Vue.prototype.$cart = new CartManager()
+  },
+}
