@@ -142,4 +142,18 @@ describe('ProductList - integration', () => {
     expect(wrapper.vm.searchTerm).toEqual('')
     expect(cards).toHaveLength(11)
   })
+
+  it('should display the total quantity of products', async () => {
+    const { wrapper } = await mountProductsList(27)
+    const label = wrapper.find('[data-testid="total-quantity-label"]')
+
+    expect(label.text()).toEqual('27 Products')
+  })
+
+  it('should display product when there is only 1 product', async () => {
+    const { wrapper } = await mountProductsList(1)
+    const label = wrapper.find('[data-testid="total-quantity-label"]')
+
+    expect(label.text()).toEqual('1 Product')
+  })
 })
