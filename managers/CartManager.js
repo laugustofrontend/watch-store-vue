@@ -68,6 +68,7 @@ export class CartManager {
 
 export default {
   install: (Vue) => {
+    /* istanbul ignore next */
     Vue.prototype.$cart = new CartManager()
   },
 }
