@@ -1,8 +1,10 @@
 import { mount } from '@vue/test-utils'
 import CartItem from '@/components/Cart/item'
 import { makeServer } from '@/miragejs/server'
+import { CartManager } from '@/managers/CartManager'
 
 const mountCartItem = (server) => {
+  const cartManager = new CartManager()
   const product = server.create('product', {
     title: 'Lindo relógio',
     price: '22.33',
@@ -11,11 +13,15 @@ const mountCartItem = (server) => {
     propsData: {
       product,
     },
+    mocks: {
+      $cart: cartManager,
+    },
   })
 
   return {
     product,
     wrapper,
+    cartManager,
   }
 }
 describe('CartItem - unit', () => {
@@ -83,5 +89,22 @@ describe('CartItem - unit', () => {
     await button.trigger('click')
     await button.trigger('click')
     expect(quantity.text()).toContain('0')
+  })
+
+  it('should display a button to remove item from cart', () => {
+    const { wrapper } = mountCartItem(server)
+    const button = wrapper.find('[data-testid="remove-button"]')
+
+    expect(button.exists()).toBe(true)
+  })
+
+  it('should call cart manager removeProduct() when button gets clicked', async () => {
+    const { wrapper, cartManager, product } = mountCartItem(server)
+    const spyRemoveProduct = jest.spyOn(cartManager, 'removeProduct')
+
+    await wrapper.find('[data-testid="remove-button"]').trigger('click')
+
+    expect(spyRemoveProduct).toHaveBeenCalledTimes(1)
+    expect(spyRemoveProduct).toHaveBeenCalledWith(product.id)
   })
 })
