@@ -34,6 +34,7 @@
       v-for="product in products"
       :key="product.id"
       :product="product"
+      data-testid="cart-item"
     />
 
     <h3 v-if="!hasProduct">Cart is empty</h3>
