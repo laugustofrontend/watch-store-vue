@@ -76,4 +76,22 @@ context('Store', () => {
       cy.get('body').contains('10 Products')
     })
   })
+
+  context('Store > Shopping Cart', () => {
+    it('should not display shopping cart when page first loads', () => {
+      cy.visit('/')
+      cy.get('[data-testid="shopping-cart"]').should('have.class', 'hidden')
+    })
+
+    it('should toggle shopping cart visibility when button is clicked', () => {
+      cy.visit('/')
+      cy.get('[data-testid="toggle-button"]').as('toggleButton')
+
+      cy.get('@toggleButton').click()
+      cy.get('[data-testid="shopping-cart"]').should('have.not', 'hidden')
+
+      cy.get('@toggleButton').click({ force: true })
+      cy.get('[data-testid="shopping-cart"]').should('have.class', 'hidden')
+    })
+  })
 })
