@@ -17,6 +17,7 @@
           v-for="product in list"
           :key="product.id"
           :product="product"
+          data-testid="product-card"
         />
       </div>
     </div>
