@@ -28,3 +28,40 @@
 Cypress.Commands.add('getByTestId', (selector) => {
   return cy.get(`[data-testid="${selector}"]`)
 })
+
+Cypress.Commands.add('addToCart', (mode) => {
+  cy.getByTestId('product-card').as('productCards')
+
+  const click = (index) => {
+    cy.get('@productCards')
+      .eq(index)
+      .find('button')
+      .click({ force: true, multiple: true })
+  }
+
+  const addByIndexes = () => {
+    for (const index in mode) {
+      click(index)
+    }
+  }
+
+  const addByIndex = () => click(mode)
+
+  const addAll = () => {
+    cy.get('@productCards')
+      .find('button')
+      .click({ force: true, multiple: true })
+  }
+
+  if (Array.isArray(mode)) {
+    addByIndexes()
+  } else if (typeof mode === 'number') {
+    addByIndex()
+  } else if (typeof mode === 'string' && mode === 'all') {
+    addAll()
+  } else {
+    throw new Error(
+      'please provide a valid input for cy.addToCart()\r\nPossible value are Array, number or "all"'
+    )
+  }
+})
