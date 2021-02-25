@@ -40,12 +40,12 @@ Cypress.Commands.add('addToCart', (mode) => {
   }
 
   const addByIndexes = () => {
-    for (const index in mode) {
+    for (const index in mode.indexes) {
       click(index)
     }
   }
 
-  const addByIndex = () => click(mode)
+  const addByIndex = () => click(mode.index)
 
   const addAll = () => {
     cy.get('@productCards')
@@ -53,11 +53,13 @@ Cypress.Commands.add('addToCart', (mode) => {
       .click({ force: true, multiple: true })
   }
 
-  if (Array.isArray(mode)) {
+  console.log(!!mode.indexes)
+
+  if (!!mode.indexes && Array.isArray(mode.indexes)) {
     addByIndexes()
-  } else if (typeof mode === 'number') {
+  } else if (mode.index) {
     addByIndex()
-  } else if (typeof mode === 'string' && mode === 'all') {
+  } else if (!!mode.indexes && mode.indexes === 'all') {
     addAll()
   } else {
     throw new Error(
