@@ -53,8 +53,6 @@ Cypress.Commands.add('addToCart', (mode) => {
       .click({ force: true, multiple: true })
   }
 
-  console.log(!!mode.indexes)
-
   if (!!mode.indexes && Array.isArray(mode.indexes)) {
     addByIndexes()
   } else if (mode.index) {
