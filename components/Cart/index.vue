@@ -7,7 +7,7 @@
     <div class="flex items-center justify-between">
       <h3 class="text-2x1 font-medium text-gray-700">Your Cart</h3>
       <button
-        v-if="hasProducts"
+        v-if="hasProduct"
         data-testid="clear-cart-button"
         @click="$cart.clearProducts()"
       >
