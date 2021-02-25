@@ -79,7 +79,7 @@ context('Store', () => {
     })
   })
 
-  context.only('Store > Shopping Cart', () => {
+  context('Store > Shopping Cart', () => {
     const quantity = 10
 
     beforeEach(() => {
