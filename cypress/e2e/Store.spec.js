@@ -123,6 +123,48 @@ context('Store', () => {
       gid('cart-item').should('have.length', 1)
     })
 
+    it('should display quantity 1 when product is added to cart', () => {
+      cy.addToCart({ index: 1 })
+
+      gid('quantity').contains(1)
+    })
+
+    it('should increase quantity when button + gets clicked', () => {
+      cy.addToCart({ index: 1 })
+
+      gid('+').click()
+      gid('quantity').contains(2)
+
+      gid('+').click({ force: true })
+      gid('quantity').contains(3)
+
+      gid('+').click({ force: true })
+      gid('quantity').contains(4)
+    })
+
+    it('should descrease quantity when button - gets clicked', () => {
+      cy.addToCart({ index: 1 })
+
+      gid('+').click()
+      gid('+').click()
+      gid('quantity').contains(3)
+
+      gid('-').click()
+      gid('quantity').contains(2)
+
+      gid('-').click()
+      gid('quantity').contains(1)
+    })
+
+    it('should not decrease bellow zero when button - gets clicked', () => {
+      cy.addToCart({ index: 1 })
+
+      gid('-').click()
+      gid('-').click({ force: true })
+      gid('-').click({ force: true })
+      gid('quantity').contains(0)
+    })
+
     it('should add 1 product to the cart', () => {
       cy.addToCart({ index: 6 })
 
