@@ -111,7 +111,7 @@ context('Store', () => {
       gid('cart-item').should('have.length', 1)
     })
 
-    it('should add 1 products to the cart', () => {
+    it('should add 1 product to the cart', () => {
       cy.addToCart({ index: 6 })
 
       gid('cart-item').should('have.length', 1)
